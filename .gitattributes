@@ -1,0 +1,4 @@
+/docker-compose.yml export-ignore
+/resources          export-ignore
+/Makefile           export-ignore
+/phpcs.xml.dist     export-ignore
