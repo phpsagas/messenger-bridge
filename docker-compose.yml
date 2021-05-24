@@ -1,0 +1,13 @@
+version: "3"
+services:
+    php-sagas-messenger-bridge:
+        build:
+            context: ./resources/docker
+            args:
+                - DOCKER_USER
+                - UID
+        container_name: php-sagas-messenger-bridge
+        hostname: php-sagas-messenger-bridge
+        restart: on-failure
+        volumes:
+            - .:/var/www
