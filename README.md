@@ -9,8 +9,7 @@
 
 ## Requirements  
 - php: ^7.1
-- [phpsagas/orchestrator](https://github.com/phpsagas/orchestrator)
-- [phpsagas/common](https://github.com/phpsagas/orchestrator)
+- [phpsagas/contracts](https://github.com/phpsagas/contracts)
 - symfony/messenger: ^4.0
 
 ## About package

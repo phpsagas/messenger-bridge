@@ -2,7 +2,7 @@
 
 namespace PhpSagas\MessengerBridge;
 
-use PhpSagas\Common\Message\CommandMessage;
+use PhpSagas\Contracts\CommandMessageInterface;
 use Symfony\Component\Messenger\Stamp\StampInterface;
 
 /**
@@ -11,9 +11,9 @@ use Symfony\Component\Messenger\Stamp\StampInterface;
 interface StampProviderInterface
 {
     /**
-     * @param CommandMessage $message
+     * @param CommandMessageInterface $message
      *
      * @return StampInterface[]
      */
-    public function getStamps(CommandMessage $message): array;
+    public function getStamps(CommandMessageInterface $message): array;
 }

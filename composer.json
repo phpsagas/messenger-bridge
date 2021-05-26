@@ -14,9 +14,8 @@
   ],
   "require": {
     "php": "^7.1",
-    "phpsagas/orchestrator": "dev-master",
-    "phpsagas/common": "dev-main",
-    "symfony/messenger": "^4.0"
+    "symfony/messenger": "^4.0",
+    "phpsagas/contracts": "dev-main"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.3"

@@ -2,8 +2,8 @@
 
 namespace PhpSagas\MessengerBridge;
 
-use PhpSagas\Common\AMQP\RoutingKeyMapperInterface;
-use PhpSagas\Common\Message\CommandMessage;
+use PhpSagas\Contracts\CommandMessageInterface;
+use PhpSagas\Contracts\RoutingKeyMapperInterface;
 use Symfony\Component\Messenger\Transport\AmqpExt\AmqpStamp;
 
 /**
@@ -16,13 +16,17 @@ class AMQPStampProvider implements StampProviderInterface
 
     public function __construct(RoutingKeyMapperInterface $routingKeyMapper)
     {
+        if (!extension_loaded('amqp')) {
+            throw new \RuntimeException('Extension amqp is required');
+        }
+
         $this->routingKeyMapper = $routingKeyMapper;
     }
 
     /**
      * @inheritDoc
      */
-    public function getStamps(CommandMessage $message): array
+    public function getStamps(CommandMessageInterface $message): array
     {
         $routingKey = $this->routingKeyMapper->transformRoutingKey($message);
         return [

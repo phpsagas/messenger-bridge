@@ -2,11 +2,11 @@
 
 namespace PhpSagas\MessengerBridge;
 
-use PhpSagas\Common\AMQP\AMQPCommandHeadersEnum;
-use PhpSagas\Common\AMQP\ExchangeMapperInterface;
-use PhpSagas\Common\AMQP\RoutingKeyMapperInterface;
-use PhpSagas\Common\Message\CommandMessage;
-use PhpSagas\Orchestrator\ExecutionEngine\MessageProducerInterface;
+use PhpSagas\Contracts\AMQPCommandHeadersEnum;
+use PhpSagas\Contracts\CommandMessageInterface;
+use PhpSagas\Contracts\ExchangeMapperInterface;
+use PhpSagas\Contracts\MessageProducerInterface;
+use PhpSagas\Contracts\RoutingKeyMapperInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 /**
@@ -36,9 +36,9 @@ class AMQPMessageProducer implements MessageProducerInterface
     }
 
     /**
-     * @param CommandMessage $message
+     * @param CommandMessageInterface $message
      */
-    public function send(CommandMessage $message): void
+    public function send(CommandMessageInterface $message): void
     {
         $replyExchange = $this->exchangeMapper->transformReplyExchange($message);
         $replyRoutingKey = $this->routingKeyMapper->transformReplyRoutingKey($message);
