@@ -10,7 +10,7 @@ up:
 	${DC_EXEC_CONTAINER} composer install
 	${DC_EXEC_CONTAINER} chown -R $(shell id -u):$(shell id -u) .
 down:
-	${DC_EXEC_CONTAINER} rm -Rf vendor
+	${DC_EXEC_CONTAINER} rm -Rf vendor composer.lock
 	${DC} down
 cli:
 	${DC_EXEC} --user=1000 php-sagas-messenger-bridge sh
